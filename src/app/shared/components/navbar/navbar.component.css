@@ -1,0 +1,21 @@
+.logo {
+    margin-right: 10vmax;
+}
+
+.btn {
+    border: 2px solid;
+    text-shadow: 2px 2px 5px rgb(58, 58, 56);
+}
+
+
+/* ================ Header Section ================ */
+
+.header {
+    background: url(../../../../assets/images/header/fondo2.jpg) no-repeat center;
+    background-size: cover;
+    min-height: 75vh;
+}
+
+.header .navbar {
+    background-color: transparent !important;
+}

@@ -1,0 +1,36 @@
+<header class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+            <img class="logo" src="../../../../assets/images/logo/Logo1.png">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a role="button" class="btn btn-outline-warning m-2 mr-5" href="#"><b>Promociones</b><span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-danger m-2" href="#"><b>Registrarse</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-success m-2" href="#" tabindex="-1"> <b>Ingresar</b> </a>
+                </li>
+            </ul>
+            <form [formGroup]="locationFormGroup" class="form-inline mt-2 mt-md-0">
+                <div fxFlex="100" fxFlex.gt-xs="40" class="pr-1 pb-1">
+                    <div class="full-width">
+                        <br>
+                        <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" class="form-control mr-sm-2" type="text" placeholder="¿Donde estas?" name="address" formControlName="address" />
+                        <p>{{formattedAddress}}</p>
+                    </div>
+                    <small *ngIf="locationFormGroup.controls['address'].hasError('required') && locationFormGroup.controls['address'].touched" class="text-danger"> Dirección Requerido </small>
+                </div>
+                <div>
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" [disabled]="locationFormGroup.invalid">Ir</button>
+                </div>
+            </form>
+        </div>
+    </nav>
+</header>
