@@ -1,5 +1,10 @@
 import { Component, OnInit, ViewChildren } from '@angular/core';
+import Swal from 'sweetalert2'
+
 import { CarouselComponent } from '../../shared/components/carousel/carousel.component';
+import { grupoTienda } from '../../shared/models/grupoTienda.model';
+import { CrudServiceService } from '../../shared/services/CRUD/crud-service.service';
+
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
@@ -7,7 +12,11 @@ import { CarouselComponent } from '../../shared/components/carousel/carousel.com
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor() { }
+  model: Array<grupoTienda>;
+
+  constructor(/*private crudServices: CrudServiceService*/) { 
+    this.model = [];
+  }
 
   myCarousel;
   carouselWidth = 640;
@@ -61,8 +70,23 @@ export class LandingPageComponent implements OnInit {
   @ViewChildren(CarouselComponent) carouselComponent;
 
   ngOnInit() {
+    //this.getGrupoTienda();
   }
-
+  /*
+  getGrupoTienda() {
+    this.crudServices.getModel('alumnos').subscribe(
+      data => {
+        if (JSON.stringify(data) === '[]') {
+          Swal.fire({
+            position: 'top-end', icon: 'info', title: 'No hay datos registrados',
+            showConfirmButton: false, timer: 1500
+          });
+        } else {
+          this.model = data;
+        }
+      });
+  }
+*/
   ngAfterViewInit() {
     this.myCarousel = this.carouselComponent.find(elem => elem.id === "my-carousel");
   }
