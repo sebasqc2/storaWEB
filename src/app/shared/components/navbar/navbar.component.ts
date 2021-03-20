@@ -10,6 +10,7 @@ export class NavbarComponent implements OnInit {
 
   public locationFormGroup: FormGroup;
   public formattedAddress ='';
+  public direccion: string;
 
   public options={
     componentRestrictions:{
@@ -17,11 +18,13 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor() { 
+    this.direccion="";
+  }
 
   ngOnInit(): void {
     this.locationFormGroup = new FormGroup({
-      address: new FormControl('', [Validators.required, Validators.minLength(2)])
+      address: new FormControl('', [Validators.required, Validators.minLength(3)])
     });
   }
 

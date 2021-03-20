@@ -1,193 +1,22 @@
 <div class="container status center">
     <h1 class="status">Tus Negocios!!!</h1>
-    <div class="container">
-        <carousel>
-            <div class="carousel-cell containerImg">
-                <div class="pt-3 ">
-                    <img class="bd-placeholder-img image" src="../../../assets/images/landing-page/carousel/1.jpg ">
-
-                </div>
-                <div class="middle">
-                    <div class="text"> Comida</div>
-                </div>
-            </div>
-            <div class="carousel-cell containerImg">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img image" src="../../../assets/images/landing-page/carousel/2.jpg ">
-                </div>
-                <div class="middle">
-                    <div class="text">Almacen</div>
-                </div>
-            </div>
-            <div class="carousel-cell containerImg">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img image" src="../../../assets/images/landing-page/carousel/3.jpg ">
-                </div>
-                <div class="middle">
-                    <div class="text">Mantenimiento pc</div>
-                </div>
-            </div>
-            <div class="carousel-cell containerImg">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img image" src="../../../assets/images/landing-page/carousel/4.jpg ">
-                </div>
-                <div class="middle">
-                    <div class="text">Fotografia</div>
-                </div>
-            </div>
-            <div class="carousel-cell containerImg">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img image" src="../../../assets/images/landing-page/carousel/5.jpg ">
-                </div>
-                <div class="middle">
-                    <div class="text">Tienda</div>
-                </div>
-            </div>
-            <div class="carousel-cell containerImg">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img image" src="../../../assets/images/landing-page/carousel/6.jpg ">
-                </div>
-                <div class="middle">
-                    <div class="text">Mascotas</div>
-                </div>
-            </div>
-            <div class="carousel-cell containerImg">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img image" src="../../../assets/images/landing-page/carousel/7.jpg ">
-                </div>
-                <div class="middle">
-                    <div class="text">Servicios</div>
-                </div>
-            </div>
-            <div class="carousel-cell containerImg">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img image" src="../../../assets/images/landing-page/carousel/8.jpg ">
-                </div>
-                <div class="middle">
-                    <div class="text">Reloj</div>
-                </div>
-            </div>
-            <div class="carousel-cell containerImg">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img image" src="../../../assets/images/landing-page/carousel/9.jpg ">
-                </div>
-                <div class="middle">
-                    <div class="text">Viajes</div>
+    <div class="row">
+        <carousel [height]="300" [arrowsOutside]="true" [cellsToScroll]="5">
+            <div class="carousel-cell" *ngFor="let tienda of tiendas">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl">
+                                <i class={{tienda.icono}}></i> 
+                            </button>
+                        </div>
+                        <div class="title_space">
+                            <h5 class="card-title ">{{tienda.nombre}}</h5>
+                        </div>
+                        <p class="card-text">{{tienda.descripcion}}</p>
+                    </div>
                 </div>
             </div>
         </carousel>
     </div>
-</div>
-
-<div class="container status center">
-    <h1 class="status">Tus Negocios!!!</h1>
-    <div class="container">
-        <carousel [margin]="0">
-            <div class="carousel-cell pt-4">
-                <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl">
-                        <i class="fa fa-check mb-3"></i>
-                        <h5>Comida</h5>
-                    </button>
-            </div>
-            <div class="carousel-cell pt-4">
-                <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl">
-                        <i class="fa fa-check"></i>
-                        <h5>Almacen</h5>
-                    </button>
-            </div>
-            <div class="carousel-cell pt-4">
-                <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl">
-                        <i class="fa fa-check"></i>
-                        <h5>Mantenimiento pc</h5>
-                    </button>
-            </div>
-            <div class="carousel-cell pt-4">
-                <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl">
-                        <i class="fa fa-check"></i>
-                        <h5>Fotografia</h5>
-                    </button>
-            </div>
-            <div class="carousel-cell pt-4">
-                <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl">
-                        <i class="fa fa-check"></i>
-                        <h5>Tienda</h5>
-                    </button>
-            </div>
-            <div class="carousel-cell pt-4">
-                <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl">
-                        <i class="fa fa-check"></i>
-                        <h5>Mascotas</h5>
-                    </button>
-            </div>
-            <div class="carousel-cell pt-4">
-                <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl">
-                        <i class="fa fa-check"></i>
-                        <h5>Servicios</h5>
-                    </button>
-            </div>
-            <div class="carousel-cell pt-4">
-                <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl">
-                        <i class="fa fa-check"></i>
-                        <h5>Reloj</h5>
-                    </button>
-            </div>
-            <div class="carousel-cell pt-4">
-                <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl">
-                        <i class="fa fa-check"></i>
-                        <h5>Viajes</h5>
-                    </button>
-            </div>
-        </carousel>
-    </div>
-</div>
-
-<div class="container status center">
-    <h1 class="status">Tus Negocios!!!</h1>
-    <carousel [margin]="0">
-        <div class="carousel-cell pt-4">
-            <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl" style="background-image:url(../../../assets/images/landing-page/carousel/1.jpg)">
-                <h5 style="color: aliceblue;">Comida</h5>
-            </button>
-        </div>
-        <div class="carousel-cell pt-4">
-            <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl" style="background-image:url(../../../assets/images/landing-page/carousel/2.jpg)">
-                <h5 style="color: aliceblue;">Almacen</h5>
-            </button>
-        </div>
-        <div class="carousel-cell pt-4">
-            <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl" style="background-image:url(../../../assets/images/landing-page/carousel/3.jpg)">
-                <h5 style="color: aliceblue;">Mantenimiento</h5>
-            </button>
-        </div>
-        <div class="carousel-cell pt-4">
-            <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl" style="background-image:url(../../../assets/images/landing-page/carousel/4.jpg)">
-                <h5 style="color: aliceblue;">Fotografia</h5>
-            </button>
-        </div>
-        <div class="carousel-cell pt-4">
-            <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl" style="background-image:url(../../../assets/images/landing-page/carousel/5.jpg)">
-                <h5 style="color: aliceblue;">Tienda</h5>
-            </button>
-        </div>
-        <div class="carousel-cell pt-4">
-            <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl" style="background-image:url(../../../assets/images/landing-page/carousel/6.jpg)">
-                <h5 style="color: aliceblue;">Mascotas</h5>
-            </button>
-        </div>
-        <div class="carousel-cell pt-4">
-            <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl" style="background-image:url(../../../assets/images/landing-page/carousel/7.jpg)">
-                <h5 style="color: aliceblue;">Servicios</h5>
-            </button>
-        </div>
-        <div class="carousel-cell pt-4">
-            <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl" style="background-image:url(../../../assets/images/landing-page/carousel/8.jpg)">
-                <h5 style="color: aliceblue;">Reloj</h5>
-            </button>
-        </div>
-        <div class="carousel-cell pt-4">
-            <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl" style="background-image:url(../../../assets/images/landing-page/carousel/9.jpg)">
-                <h5 style="color: aliceblue;">Viajes</h5>
-            </button>
-        </div>
-    </carousel>
 </div>
