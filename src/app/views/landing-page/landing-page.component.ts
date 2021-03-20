@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChildren } from '@angular/core';
+import { Component, Input, OnInit, ViewChildren } from '@angular/core';
+import Swal from 'sweetalert2';
 
 import { CarouselComponent } from '../../shared/components/carousel/carousel.component'
 
@@ -13,6 +14,8 @@ import { DataService } from '../../shared/services/landing-page/data-location.se
 })
 export class LandingPageComponent implements OnInit {
   @ViewChildren(CarouselComponent) carouselComponent;
+
+  @Input() Direccion: string;
   
   myCarousel;
 	carouselWidth = 640;
@@ -24,6 +27,23 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit() {
     this.tiendas = this.dataSvc.getTiendas();
+    this.Direccion="";
+  }
+
+
+  cargarTiendas(tienda: grupoTienda):void{
+    if(this.Direccion =="" || this.Direccion.length<3){
+      Swal.fire({
+        position: 'top-end', icon: 'error', title: 'Debe ingresar una dirección valida',
+        showConfirmButton: false, timer: 1500
+      });
+    }else{
+      Swal.fire(
+        'Ventana',
+        ' Establecimientos comerciales!',
+        'success'
+      )
+    }
   }
 
   ngAfterViewInit() {

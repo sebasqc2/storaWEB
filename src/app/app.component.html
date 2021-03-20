@@ -1,5 +1,5 @@
-<app-navbar></app-navbar>
+<app-navbar (envioDireccion)="direccionNavbar=$event"></app-navbar>
 <main role="main">
-    <app-landing-page></app-landing-page>
+    <app-landing-page [Direccion]="direccionNavbar"></app-landing-page>
     <app-footer></app-footer>
 </main>

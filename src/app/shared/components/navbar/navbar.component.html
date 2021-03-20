@@ -31,16 +31,16 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-search-location"></i></span>
                         </div>
-                        <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" class="form-control mr-sm-2" type="text" placeholder="¿Donde estas?" name="address" formControlName="address" [(ngModel)]="this.direccion"
+                        <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" class="form-control mr-sm-2" type="text" placeholder="¿Donde estas?" name="address" formControlName="address" (input)="cambioDireccion($event.target.value)"
                         />
                     </div>
-                    <div class="m-3">
-                        <small *ngIf="locationFormGroup.controls['address'].hasError('minlength') && locationFormGroup.controls['address'].touched" class="alert alert-danger"> La ubicación requeiere al menos {{locationFormGroup.controls['address'].errors.minlength.requiredLength}} dígitos </small>
-                        <small *ngIf="locationFormGroup.controls['address'].hasError('required') && locationFormGroup.controls['address'].touched" class="alert alert-danger"> Dirección Requerido </small>
+                    <div class=" m-3 ">
+                        <small *ngIf="locationFormGroup.controls[ 'address'].hasError( 'minlength') && locationFormGroup.controls[ 'address'].touched " class="alert alert-danger "> La ubicación requiere al menos {{locationFormGroup.controls['address'].errors.minlength.requiredLength}} dígitos </small>
+                        <small *ngIf="locationFormGroup.controls[ 'address'].hasError( 'required') && locationFormGroup.controls[ 'address'].touched " class="alert alert-danger "> Dirección Requerida </small>
                     </div>
                 </div>
                 <div>
-                    <button class="btn btn-primary my-2 my-sm-0" type="submit" [disabled]="locationFormGroup.invalid">&nbsp;&nbsp;&nbsp;&nbsp; Ir &nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button class="btn btn-primary my-2 my-sm-0 " type="button " [disabled]="locationFormGroup.invalid " (click)="cargarDireccion()">&nbsp;&nbsp;&nbsp;&nbsp; Ir &nbsp;&nbsp;&nbsp;&nbsp;</button>
                 </div>
             </form>
         </section>
