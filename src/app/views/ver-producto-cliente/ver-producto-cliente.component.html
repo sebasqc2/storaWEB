@@ -14,11 +14,18 @@
           </button>
             </div>
             <div class="modal-body">
-                ...
+                <div class="container espacioImagen">
+                    <img src={{model.imagen}} class="img-fluid rounded mx-auto d-block imgProducto" alt="producto">
+                </div>
+                <div class="container">
+                    <h5>{{model.nombreProducto}}</h5>
+                    <p>{{model.descripcion}}</p>
+                    <h6 class="valor">{{convertirPrecio()}}</h6>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <div class="container">
-
                     <form [formGroup]="form">
                         <div class="row">
                             <div class="col-4">
@@ -29,7 +36,7 @@
                             </div>
                             <div class="col-1"></div>
                             <div class="col-4">
-                                <button type="button" class="btn btn-primary mt-1">Agregar {{this.precio}}</button>
+                                <button type="button" class="btn btn-primary mt-1" (click)="cargarPedido()" data-dismiss="modal">Agregar {{this.precio}}</button>
                             </div>
                         </div>
                     </form>
