@@ -11,6 +11,9 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { IvyCarouselModule } from '../app/shared/components/carousel/carousel.module';
 
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
+
+import { VerProductoClienteComponent } from './views/ver-producto-cliente/ver-producto-cliente.component';
 
 
 @NgModule({
@@ -18,14 +21,16 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
     AppComponent,
     LandingPageComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    VerProductoClienteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     IvyCarouselModule,
     ReactiveFormsModule,
-    GooglePlaceModule
+    GooglePlaceModule,
+    NgxNumberSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
