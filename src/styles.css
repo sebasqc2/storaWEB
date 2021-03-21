@@ -1,7 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '~bootstrap/dist/css/bootstrap.css';
-@import '~font-awesome/css/font-awesome.min.css';
 .center {
     text-align: center;
+}
+
+.centrado {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

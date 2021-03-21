@@ -1,66 +1,49 @@
-import { Component, OnInit, ViewChildren } from '@angular/core';
-import { CarouselComponent } from '../../shared/components/carousel/carousel.component';
+import { Component, Input, OnInit, ViewChildren } from '@angular/core';
+import Swal from 'sweetalert2';
+
+import { CarouselComponent } from '../../shared/components/carousel/carousel.component'
+
+import { grupoTienda } from '../../shared/models/grupoTienda.model';
+import { DataService } from '../../shared/services/landing-page/tipos_estalecimientos.service';
+
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.css']
+  styleUrls: ['./landing-page.component.css'],
+  providers: [DataService]
 })
 export class LandingPageComponent implements OnInit {
-
-  constructor() { }
-
-  myCarousel;
-  carouselWidth = 640;
-  carouselHeight = 220;
-
-  images = [
-    {
-      path: '../../../assets/images/landing-page/carousel/1.jpg'
-    },
-    {
-      path: '../../../assets/images/landing-page/carousel/2.jpg'
-    },
-    {
-      path: '../../../assets/images/landing-page/carousel/3.jpg'
-    },
-    {
-      path: '../../../assets/images/landing-page/carousel/4.jpg'
-    },
-    {
-      path: '../../../assets/images/landing-page/carousel/5.jpg'
-    },
-    {
-      path: '../../../assets/images/landing-page/carousel/6.jpg'
-    },
-    {
-      path: '../../../assets/images/landing-page/carousel/7.jpg'
-    },
-    {
-      path: '../../../assets/images/landing-page/carousel/8.jpg'
-    }
-  ];
-
-  images2 = [
-    {
-      path: '../../../assets/images/landing-page/carousel/photo-1444065707204-12decac917e8.jfif',
-    },
-    {
-      path: '../../../assets/images/landing-page/carousel/photo-1445452916036-9022dfd33aa8.jfif',
-    },
-    {
-      path: '../../../assets/images/landing-page/carousel/photo-1443996104801-80c82e789b18.jfif',
-    },
-    {
-      path: '../../../assets/images/landing-page/carousel/photo-1505839673365-e3971f8d9184.jfif',
-    },
-    {
-      path: '../../../assets/images/landing-page/carousel/photo-1545420333-23a22b18b8fa.jfif',
-    },
-  ];
-
   @ViewChildren(CarouselComponent) carouselComponent;
 
+  @Input() Direccion: string;
+  
+  myCarousel;
+	carouselWidth = 640;
+	carouselHeight = 220;
+
+  public tiendas: grupoTienda[];
+
+  constructor(private dataSvc: DataService) { }
+
   ngOnInit() {
+    this.tiendas = this.dataSvc.getTiendas();
+    this.Direccion="";
+  }
+
+
+  cargarTiendas(tienda: grupoTienda):void{
+    if(this.Direccion =="" || this.Direccion.length<3){
+      Swal.fire({
+        position: 'top-end', icon: 'error', title: 'Debe ingresar una dirección valida',
+        showConfirmButton: false, timer: 1500
+      });
+    }else{
+      Swal.fire(
+        'Ventana',
+        ' Establecimientos comerciales!',
+        'success'
+      )
+    }
   }
 
   ngAfterViewInit() {
@@ -75,12 +58,6 @@ export class LandingPageComponent implements OnInit {
     if (event.type === "click") {
       console.log(event);
     }
-  }
-
-  addImage() {
-    this.images.push({
-      path: '../../../assets/images/landing-page/carousel/9.jpg'
-    });
   }
 
   next() {
@@ -105,7 +82,4 @@ export class LandingPageComponent implements OnInit {
     this.myCarousel.select(index);
   }
 
-  changeImagesArray() {
-    this.images = this.images2;
-  }
 }

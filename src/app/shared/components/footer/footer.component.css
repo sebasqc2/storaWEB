@@ -1,9 +1,22 @@
 #section-footer {
     padding-top: 40px;
     padding-bottom: 40px;
-    background: #333;
-    color: #b48686;
+    background: url(../../../../assets/images/header/fondo3.jpg) no-repeat center;
+    background-size: cover;
+    background-position: 0% 0%;
     margin-top: 15px;
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    font-size: 1vw;
+    text-align: center;
+}
+
+.logo {
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.7));
+    width: 60%;
+    height: 60%;
 }
 
 .footer-title {
@@ -19,7 +32,7 @@
 .social-icons ul li a {
     margin-left: 10px;
     font-size: 28px;
-    color: #9D9D9D;
+    color: #333232;
     font-weight: normal;
     text-shadow: none;
     -webkit-transition: all .5s ease-in;
@@ -29,34 +42,5 @@
 }
 
 .social-icons ul li a:hover {
-    color: #7F8C8D;
-}
-
-.copyright {
-    padding-top: 15px;
-}
-
-.site-name {
-    color: #fff;
-    font-family: 'Bangers', cursive;
-    font-size: 24px;
-    padding: 8px 15px;
-    letter-spacing: 1px;
-}
-
-.site-name span {
-    color: #fff;
-    padding: 0 13px;
-    font-weight: 400;
-    height: 35px;
-    width: 35px;
-    display: inline-block;
-    margin-right: 3px;
-    font-size: 28px;
-    line-height: 35px;
-    background-color: #7F8C8D;
-}
-
-.site-name:hover {
     color: #7F8C8D;
 }

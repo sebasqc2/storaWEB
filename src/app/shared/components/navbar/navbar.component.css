@@ -1,19 +1,32 @@
 .logo {
-    margin-right: 10vmax;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.7));
 }
 
-.btn {
-    border: 2px solid;
-    text-shadow: 2px 2px 5px rgb(58, 58, 56);
+.navbar-toggler {
+    filter: invert(1) drop-shadow(0 2px 5px rgb(198, 247, 66));
+}
+
+h3 {
+    display: inline-block;
+    padding: 30px;
+}
+
+h1 {
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    font-size: 3vw;
 }
 
 
 /* ================ Header Section ================ */
 
 .header {
-    background: url(../../../../assets/images/header/fondo2.jpg) no-repeat center;
+    background: url(../../../../assets/images/header/fondo3.jpg) no-repeat center;
     background-size: cover;
     min-height: 75vh;
+    background-position: 0% 73%;
 }
 
 .header .navbar {

@@ -1,164 +1,22 @@
 <div class="container status center">
-    <h1 class="m-5">Tus Negocios!!!</h1>
+    <h1 class="status">Tus Negocios!!!</h1>
     <div class="row">
-        <carousel [loop]="true">
-            <div class="carousel-cell">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img rounded-circle" src="../../../assets/images/landing-page/carousel/1.jpg ">
+        <carousel [height]="300" [arrowsOutside]="true" [cellsToScroll]="5">
+            <div class="carousel-cell" *ngFor="let tienda of tiendas">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl" (click)="cargarTiendas(tienda)">
+                                <i class={{tienda.icono}}></i> 
+                            </button>
+                        </div>
+                        <div class="title_space">
+                            <h5 class="card-title ">{{tienda.nombre}}</h5>
+                        </div>
+                        <p class="card-text">{{tienda.descripcion}}</p>
+                    </div>
                 </div>
-                <h5>Comida</h5>
-            </div>
-            <div class="carousel-cell">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img rounded-circle" src="../../../assets/images/landing-page/carousel/2.jpg ">
-                </div>
-                <h5>Almacen</h5>
-            </div>
-            <div class="carousel-cell">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img rounded-circle" src="../../../assets/images/landing-page/carousel/3.jpg ">
-                </div>
-                <h5>Mantenimiento pc</h5>
-            </div>
-            <div class="carousel-cell">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img rounded-circle" src="../../../assets/images/landing-page/carousel/4.jpg ">
-                </div>
-                <h5>Fotografia</h5>
-            </div>
-            <div class="carousel-cell">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img rounded-circle" src="../../../assets/images/landing-page/carousel/5.jpg ">
-                </div>
-                <h5>Tienda</h5>
-            </div>
-            <div class="carousel-cell">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img rounded-circle" src="../../../assets/images/landing-page/carousel/6.jpg ">
-                </div>
-                <h5>Mascotas</h5>
-            </div>
-            <div class="carousel-cell">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img rounded-circle" src="../../../assets/images/landing-page/carousel/7.jpg ">
-                </div>
-                <h5>Servicios</h5>
-            </div>
-            <div class="carousel-cell">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img rounded-circle" src="../../../assets/images/landing-page/carousel/8.jpg ">
-                </div>
-                <h5>Reloj</h5>
-            </div>
-            <div class="carousel-cell">
-                <div class="pt-3">
-                    <img class="bd-placeholder-img rounded-circle" src="../../../assets/images/landing-page/carousel/9.jpg ">
-                </div>
-                <h5>Viajes</h5>
             </div>
         </carousel>
     </div>
-
-    <!-- ******************Otras Opciones de Sliders ***************************-->
-    <!--     
-
-        <h3>objectFit contain</h3>
-        <div class="row ">
-            <carousel objectFit="contain " [images]="images ">
-            </carousel>
-        </div>
-
-        
-        <h3>margin 0</h3>
-        <div class="row ">
-            <carousel [margin]="0 " [images]="images ">
-            </carousel>
-        </div>
-
-        <h3>height 300</h3>
-        <div class="row ">
-            <carousel [height]="300 " [images]="images ">
-            </carousel>
-        </div>
-
-        <h3>3 cells to show</h3>
-        <div class="row ">
-            <carousel [cellsToShow]="3 " [images]="images ">
-            </carousel>
-        </div>
-
-        <h3>2 cells to scroll</h3>
-        <div class="row ">
-            <carousel [cellsToScroll]="2 " [images]="images ">
-            </carousel>
-        </div>
-    </div>
-
-    <div class="container ">
-        <h2>Images in template</h2>
-        <carousel>
-            <div class="carousel-cell ">
-                <img src="../../../assets/images/landing-page/carousel/1.jfif ">
-            </div>
-            <div class="carousel-cell ">
-                <img src="../../../assets/images/landing-page/carousel/2.jpg ">
-            </div>
-            <div class="carousel-cell ">
-                <img src="../../../assets/images/landing-page/carousel/3.jpg ">
-            </div>
-            <div class="carousel-cell ">
-                <img src="../../../assets/images/landing-page/carousel/4.jfif ">
-            </div>
-            <div class="carousel-cell ">
-                <img src="../../../assets/images/landing-page/carousel/5.jpg ">
-            </div>
-            <div class="carousel-cell ">
-                <img src="../../../assets/images/landing-page/carousel/6.jpg ">
-            </div>
-        </carousel>
-    </div>
-
-    <div class="container ">
-        <h2>HTML content in template</h2>
-        <carousel>
-            <div class="carousel-cell ">
-                <div style="width: 100%; height: 100%; background: aliceblue; ">1</div>
-            </div>
-            <div class="carousel-cell ">
-                <div style="width: 100%; height: 100%; background: aliceblue; ">2</div>
-            </div>
-            <div class="carousel-cell ">
-                <div style="width: 100%; height: 100%; background: aliceblue; ">3</div>
-            </div>
-            <div class="carousel-cell ">
-                <div style="width: 100%; height: 100%; background: aliceblue; ">4</div>
-            </div>
-            <div class="carousel-cell ">
-                <div style="width: 100%; height: 100%; background: aliceblue; ">5</div>
-            </div>
-            <div class="carousel-cell ">
-                <div style="width: 100%; height: 100%; background: aliceblue; ">6</div>
-            </div>
-        </carousel>
-    </div>
-
-    <div class="container ">
-        <h2>Full width cells</h2>
-        <carousel [images]="images2 " [objectFit]=" 'cover' " [cellWidth]=" '100%' " [height]="300 " [borderRadius]="10 " [arrowsOutside]="true " [autoplay]="true " [dots]="true " [loop]="true ">
-        </carousel>
-    </div>
-
-    <div class="container ">
-        <h2>Data change</h2>
-
-        <p>
-            <button (click)="changeImagesArray() ">Change images array</button>
-            //<button (click)="addImage() ">Add image</button> 
-        </p>
-
-        <carousel [images]="images ">
-        </carousel>
-    </div>
-    -->
-
 </div>

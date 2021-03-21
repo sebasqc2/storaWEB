@@ -20,8 +20,7 @@ export interface Properties {
 
 export interface Images {
     [index: number]: { 
-    	path: string;
-        name?: string; 
+    	path: string; 
     	width?: number; 
     	height?: number;
     	//type?: 'image' | 'video'
@@ -29,8 +28,7 @@ export interface Images {
 }
 
 export interface Image {
-    path: string;
-    name?: string;  
+    path: string; 
     width?: number; 
     height?: number;
 }
