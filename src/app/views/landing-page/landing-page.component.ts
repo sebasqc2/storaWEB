@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { CarouselComponent } from '../../shared/components/carousel/carousel.component'
 
 import { grupoTienda } from '../../shared/models/grupoTienda.model';
-import { DataService } from '../../shared/services/landing-page/data-location.service';
+import { DataService } from '../../shared/services/landing-page/tipos_estalecimientos.service';
 
 @Component({
   selector: 'app-landing-page',
