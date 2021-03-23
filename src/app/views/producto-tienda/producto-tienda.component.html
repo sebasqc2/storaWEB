@@ -1,0 +1,59 @@
+<div class="container-sport100">
+
+  <div class="page-content p-12 align-items-center" id="content">
+    <!--<button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i
+        class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">MENU</small></button>-->
+    <div class="container ">
+      <h1 style="text-align: center;">VER ESTUDIANTES </h1>
+      <div class=" row ">
+        <div class="col-sm-6">
+          <input type="text" class="form-control" placeholder="Buscar por nombre o codigo..." (entrada)="$event"
+            required>
+          <br>{{entrada}}
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-1">
+          <button type="submit" class="btn btn-success" (click)="getBuscar()">Cargar</button>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-1">
+          <button type="button" class="btn btn-light" (click)="limpiarBusqueda()">Limpiar</button>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+      <div class=" tabla  ">
+        <div class="col-sm-12 align-items-center">
+          <table class="table table-responsive table table-sm ">
+            <thead class="thead-dark">
+              <tr>
+                <th>CODIGO</th>
+                <th>NOMBRE PRODUCTO</th>
+                <th>STOCK</th>
+                <th>PRECIO</th>
+                <th>UNIDAD</th>
+                <th>ESTADO</th>
+                <th>OPCIONES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let i of model">
+                <td>{{i.codigo}}</td>
+                <td>{{i.nombreProducto}} </td>
+                <td>{{i.stock}} </td>
+                <td>{{i.precio}} </td>
+                <td>{{i.unidad}} </td>
+                <td>{{i.estado}} </td>
+                <td>
+                  <button type="submit" class="btn btn btn-light ">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

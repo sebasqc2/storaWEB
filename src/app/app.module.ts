@@ -14,6 +14,10 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
 
 import { VerProductoClienteComponent } from './views/ver-producto-cliente/ver-producto-cliente.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AgregarProductoComponent } from './views/agregar-producto/agregar-producto.component';
+import { ProductoTiendaComponent } from './views/producto-tienda/producto-tienda.component';
+import { EditarProductoComponent } from './views/editar-producto/editar-producto.component';
 
 
 @NgModule({
@@ -22,7 +26,10 @@ import { VerProductoClienteComponent } from './views/ver-producto-cliente/ver-pr
     LandingPageComponent,
     NavbarComponent,
     FooterComponent,
-    VerProductoClienteComponent
+    VerProductoClienteComponent,
+    AgregarProductoComponent,
+    ProductoTiendaComponent,
+    EditarProductoComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +37,8 @@ import { VerProductoClienteComponent } from './views/ver-producto-cliente/ver-pr
     IvyCarouselModule,
     ReactiveFormsModule,
     GooglePlaceModule,
-    NgxNumberSpinnerModule
+    NgxNumberSpinnerModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
