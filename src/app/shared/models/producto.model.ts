@@ -9,7 +9,7 @@ export class Producto {
     public imagen: string;
     public descripcion:string;
 
-    constructor(codigo: string, nombreProducto: string, stock: number, precio: number, estado: boolean, unidad: string, imagen: string, descripcion:string) {
+    constructor(codigo: string, nombreProducto: string, stock: number, precio: number, unidad: string, estado: boolean, imagen: string, descripcion:string) {
         this.codigo = codigo;
         this.nombreProducto = nombreProducto;
         this.stock = stock;

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import Swal from 'sweetalert2';
 
 import { Producto } from '../../shared/models/producto.model';
-import { CrudServiceService } from '../../shared/services/CRUD/crud-service.service';
+//import { CrudServiceService } from '../../shared/services/CRUD/crud-service.service';
 
 @Component({
   selector: 'app-producto-tienda',
@@ -13,17 +13,17 @@ export class ProductoTiendaComponent implements OnInit {
 
   model: Array<Producto>;
   copia: Array<Producto>;
-  entrada: string;
+  public entrada: string;
   bandera: boolean;
 
 
-  constructor(private crudServices: CrudServiceService) {
+  constructor(/*private crudServices: CrudServiceService*/) {
 
     this.model = [];
     this.copia = [];
     this.entrada = '';
     this.bandera = false;
-    this.getProductos();
+    //this.getProductos();
    }
 
   ngOnInit(): void {
@@ -40,7 +40,7 @@ export class ProductoTiendaComponent implements OnInit {
   limpiarBusqueda() {
     this.model = this.copia;
   }
-
+/*
   getProductos() {
     this.crudServices.getModel('productos').subscribe(
       data => {
@@ -99,5 +99,5 @@ export class ProductoTiendaComponent implements OnInit {
     this.limpiarBusqueda();
     Swal.fire({ icon: 'warning', title: 'Error...', text: 'No se ha encontrado entrenador!' });
   }
-
+*/
 }
