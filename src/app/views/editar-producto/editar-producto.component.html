@@ -1,1 +1,63 @@
-<p>editar-producto works!</p>
+<div class="container m-5">
+    <h2 class="center m-5">Agregar nuevo producto</h2>
+    <div>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputText1">Código del producto</label>
+                    <input type="text" class="form-control" id="inputText1" placeholder="Ingrese Código">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputText2">Nombre del producto</label>
+                    <input type="text" class="form-control" id="inputText2" placeholder="Ingrese Nombre">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="inputText3">Stock del producto</label>
+                    <input type="number" class="form-control" id="inputText3" value="1" min="1" placeholder="Ingrese Stock">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputText4">Precio del producto</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">$</span>
+                        <input type="number" class="form-control" id="inputText4" value="1000" min="0" placeholder="Ingrese Precio">
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="inputState1">Unidades del producto</label>
+                    <select id="inputState1" class="form-control">
+                      <option selected>Unidad</option>
+                      <option>Libra</option>
+                      <option>Kilo</option>
+                      <option>Docena</option>
+                      <option>...</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3 pl-5">
+                    <div class="m-0">
+                        <label for="formFileLg" class="form-label">Estado producto</label>
+                    </div>
+                    <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-on="Activo" data-off="Inactivo.">
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="formFileLg" class="form-label">Ingrese imagen</label>
+                <input class="form-control form-control-md pb-5 pt-3 mb-3" id="formFileLg" type="file" />
+            </div>
+            <div class="form-row">
+                <label for="exampleFormControlTextarea1">Descripción del producto</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+
+
+            <div class="form-group center m-3">
+                <button type="submit" class="btn btn-success">Agregar</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+        <a class="btn btn-primary" href="#" role="button" routerLink="/mis_productos">Regresar</a>
+    </div>
+</div>
