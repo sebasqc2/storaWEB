@@ -14,8 +14,14 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
 
 import { VerProductoClienteComponent } from './views/ver-producto-cliente/ver-producto-cliente.component';
+
 import { LoginComponent } from './shared/components/login/login.component';
 import { RegisterComponent } from './shared/components/register/register.component';
+
+import { AgregarProductoComponent } from './views/agregar-producto/agregar-producto.component';
+import { ProductoTiendaComponent } from './views/producto-tienda/producto-tienda.component';
+import { EditarProductoComponent } from './views/editar-producto/editar-producto.component';
+
 
 
 @NgModule({
@@ -26,7 +32,10 @@ import { RegisterComponent } from './shared/components/register/register.compone
     FooterComponent,
     VerProductoClienteComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AgregarProductoComponent,
+    ProductoTiendaComponent,
+    EditarProductoComponent
   ],
   imports: [
     BrowserModule,
