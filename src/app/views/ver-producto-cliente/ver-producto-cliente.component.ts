@@ -24,7 +24,7 @@ export class VerProductoClienteComponent {
       price: 1
     });
 
-    this.model = new Producto("1", "Burro Ñoño", 12, 12000, true, this.imageUrl, "Tortilla pequeña, proteína a elegir, tocineta premium, trocitos de chorizo coctel, queso Americano, salsa de frijol refrito, guacamole, lechuga, pico de gallo y slasa de la casa.");
+    this.model = new Producto("1", "Burro Ñoño", 12, 12000,"unidades", true, this.imageUrl, "Tortilla pequeña, proteína a elegir, tocineta premium, trocitos de chorizo coctel, queso Americano, salsa de frijol refrito, guacamole, lechuga, pico de gallo y slasa de la casa.");
     this.precio = "";
     this.change(1);
   }
