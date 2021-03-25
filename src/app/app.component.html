@@ -1,3 +1,4 @@
+<!--
 <app-navbar (envioDireccion)="direccionNavbar=$event"></app-navbar>
 <main role="main">
     <app-ver-producto-cliente></app-ver-producto-cliente>
@@ -5,3 +6,12 @@
     <app-producto-tienda></app-producto-tienda>
     <app-footer></app-footer>
 </main>
+-->
+
+<app-navbar (envioDireccion)="direccionNavbar=$event"></app-navbar>
+<main>
+    <router-outlet></router-outlet>
+</main>
+
+<app-footer></app-footer>
+
