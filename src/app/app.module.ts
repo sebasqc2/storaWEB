@@ -14,7 +14,8 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
 
 import { VerProductoClienteComponent } from './views/ver-producto-cliente/ver-producto-cliente.component';
-import { LoginComponent } from './views/login/login.component';
+import { LoginComponent } from './shared/components/login/login.component';
+import { RegisterComponent } from './shared/components/register/register.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { LoginComponent } from './views/login/login.component';
     NavbarComponent,
     FooterComponent,
     VerProductoClienteComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
