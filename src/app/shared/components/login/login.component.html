@@ -1,0 +1,25 @@
+<form (ngSubmit)="login(f)" #f="ngForm" name="loginForm">
+    <div class="md-form">
+        <input type="email" name="email" class="form-control validate" [(ngModel)]="usuario.email" required email>
+        <label data-error="" data-success="">Email</label>
+    </div>
+
+    <div class="md-form">
+        <input type="password" class="form-control validate" name="password" [(ngModel)]="usuario.password" required minlength="8">
+        <label data-error="" data-success="">Contraseña</label>
+        <p class="font-small blue-text d-flex justify-content-end">Olvidó su<a href="#" class="blue-text ml-1"> Contraseña?</a></p>
+    </div>
+
+
+
+    <div class="text-center mb-3">
+        <button type="submit" class="btn btn-primary btn-block z-depth-1a">Iniciar sesión</button>
+    </div>
+</form>
+<p class="font-small dark-grey-text d-flex justify-content-center">O inicia con:</p>
+
+<div class="row my-3 justify-content-center">
+    <button type="button" class="btn btn-primary z-depth-1a"><i class="fab fa-facebook-f text-center"></i></button>
+    <button type="button" class="btn btn-purple z-depth-1a"><i class="fab fa-twitter text-center"></i></button>
+    <button type="button" class="btn btn-red z-depth-1a"><i class="fab fa-google-plus-g text-center"></i></button>
+</div>

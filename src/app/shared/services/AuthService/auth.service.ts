@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UsuarioModel } from '../../models/usuario.model';
+import { RegistroModel} from '../../models/registro.model';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment.prod';
 
@@ -46,6 +47,53 @@ export class AuthService {
       map(resp => {
         // tslint:disable-next-line: no-string-literal
         this.guardarDatos( resp['jwt'], resp['user'].username , resp['user'].role.name);
+        return resp;
+      })
+    );
+  }
+  
+  register( registro: RegistroModel ) {
+    const rolUsuario = {
+      id: 4,
+      name: "Usuario",
+      description: "rol del usuario generico sin tiendas",
+      type: "usuario"
+    }
+    const rolTendero = {
+      id: 3,
+      name: "Tendero",
+      description: "rol para el tendero",
+      type: "tendero"
+    }
+    const authData = {
+      username:registro.name,
+      email:registro.email,
+      provider:'local',
+      confirmed: true,
+      blocked: false,
+      nombre: registro.name,
+      nacimiento:registro.birthday,
+      direccion:registro.address,
+      telefono:registro.phone,
+      password: registro.password,
+      role:{}
+    };
+    if (registro.role==="usuario") {
+      authData.role=rolUsuario;
+    }
+    if (registro.role==="tendero") {
+      authData.role=rolTendero;
+    }
+    console.log(authData);
+
+    return this.http.post(
+      `${ this.serverURL}users`, authData, this.httpOptions
+    ).pipe(
+      map(resp => {
+        // tslint:disable-next-line: no-string-literal
+        console.log(resp);
+        
+        //this.guardarDatos( resp['jwt'], resp['user'].username , resp['user'].role.name);
         return resp;
       })
     );
