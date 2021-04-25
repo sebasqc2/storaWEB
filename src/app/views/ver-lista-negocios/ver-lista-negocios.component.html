@@ -1,0 +1,51 @@
+<div class="container status center mt-5">
+  <h1 class="status">¡NEGOCIOS!</h1>
+  <hr>
+  <div class="row">
+    <div class="col-3">
+      <div class="container mt-5">
+        <h4 class="dropdown-header">CATEGORÍAS</h4>
+        <a class="dropdown-item" href="#" routerLink="/ver_lista_negocios"
+          (click)="construirTarjetasPorCategoria(categoria)" *ngFor="let categoria of categorias">{{categoria}}</a>
+      </div>
+    </div>
+    <div class="col">
+      <div class="container">
+        <div class="row" *ngFor="let filaTarjetas of tarjetas">
+          <div class="col" *ngFor="let tarjeta of filaTarjetas">
+            <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl">
+              <div class="card no-border">
+                <div class="card-horizontal">
+                  <div class="img-square-wrapper">
+                    <!-- <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl"> -->
+                    <img src={{tarjeta.logo}} class="rounded float-left img-fluid" alt="Logo {{tarjeta.nombre}}">
+                    <!-- <i class={{tarjeta.logo}}></i> -->
+                    <!-- </button> -->
+                  </div>
+                  <div class="card-body">
+                    <h4 class="card-title">{{tarjeta.nombre}}</h4>
+                    <p class="card-text">{{tarjeta.descripcion}}</p>
+                  </div>
+                </div>
+              </div>
+            </button>
+            <hr>
+            <!-- <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl">
+                        <i class= {{tarjeta.logo}} ></i>
+                    </button>
+                </div>
+                <div class="title_space">
+                    <h5 class="card-title ">{{tarjeta.nombre}}</h5>
+                </div>
+                <p class="card-text">{{tarjeta.descripcion}}</p>
+            </div>
+        </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

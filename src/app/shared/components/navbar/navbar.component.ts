@@ -5,11 +5,13 @@ import { NgForm } from '@angular/forms';
 import { UsuarioModel } from '../../models/usuario.model';
 import { RegistroModel } from "../../models/registro.model";
 import {AuthService} from '../../services/AuthService/auth.service';
+import { TiendaService } from '../../services/ver-lista-negocios/tienda.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
+  providers: [TiendaService]
 })
 export class NavbarComponent implements OnInit {
 
@@ -21,6 +23,7 @@ export class NavbarComponent implements OnInit {
   public formattedAddress ='';
   public dirEntada:string;
 
+
   @Output() envioDireccion: EventEmitter<string> = new EventEmitter<string>();
   
 
@@ -30,7 +33,7 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  constructor() { 
+  constructor(public tiendaSvc: TiendaService) { 
     this.envioDireccion.emit("  ");
     this.dirEntada="";
   }
@@ -53,6 +56,8 @@ export class NavbarComponent implements OnInit {
         ' Establecimientos comerciales!',
         'success'
       )
+      //this.tiendaSvc.direccion = this.dirEntada
+      this.tiendaSvc.setDireccion(this.dirEntada)
   }
 
   

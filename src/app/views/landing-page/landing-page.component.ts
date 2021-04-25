@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, ViewChildren } from '@angular/core';
+import { TiendaService } from 'src/app/shared/services/ver-lista-negocios/tienda.service';
 import Swal from 'sweetalert2';
 
 import { CarouselComponent } from '../../shared/components/carousel/carousel.component'
@@ -10,7 +11,7 @@ import { DataService } from '../../shared/services/landing-page/tipos_estalecimi
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css'],
-  providers: [DataService]
+  providers: [DataService, TiendaService]
 })
 export class LandingPageComponent implements OnInit {
   @ViewChildren(CarouselComponent) carouselComponent;
@@ -23,7 +24,7 @@ export class LandingPageComponent implements OnInit {
 
   public tiendas: grupoTienda[];
 
-  constructor(private dataSvc: DataService) { }
+  constructor(private dataSvc: DataService, public tiendaSvc: TiendaService) { }
 
   ngOnInit() {
     this.tiendas = this.dataSvc.getTiendas();
@@ -32,6 +33,9 @@ export class LandingPageComponent implements OnInit {
 
 
   cargarTiendas(tienda: grupoTienda):void{
+    this.Direccion = this.tiendaSvc.getDireccion()
+    console.log("la dirección es: " + this.Direccion)
+    
     if(this.Direccion =="" || this.Direccion.length<3){
       Swal.fire({
         position: 'top-end', icon: 'error', title: 'Debe ingresar una dirección valida',
