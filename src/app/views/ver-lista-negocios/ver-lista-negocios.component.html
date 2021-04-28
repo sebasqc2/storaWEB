@@ -1,19 +1,30 @@
-<div class="container status center mt-5">
+<div class="row">
+<div class="col-3 shadow p-3 bg-white rounded">
+  <div class="container mt-3">
+    <h4 class="dropdown-header size-2">ESTABLECIMIENTOS</h4>
+    <!-- <a class="dropdown-item size" href="#" routerLink="/ver_lista_negocios" 
+      (click)="cambiarCategoria(categoria)" *ngFor="let categoria of categorias">{{categoria}}</a> -->
+      <a class="dropdown-item size" href="#" routerLink="/ver_lista_negocios" 
+      (click)="onReloadURL(categoria)" *ngFor="let categoria of categorias">{{categoria}}</a>
+  </div>
+</div>
+
+<div class="container col status center mt-3">
   <h1 class="status">¡NEGOCIOS!</h1>
   <hr>
   <div class="row">
-    <div class="col-3">
+    <!-- <div class="col-3 shadow p-3 bg-white rounded">
       <div class="container mt-5">
-        <h4 class="dropdown-header">CATEGORÍAS</h4>
+        <h4 class="dropdown-header">ESTABLECIMIENTOS</h4>
         <a class="dropdown-item" href="#" routerLink="/ver_lista_negocios"
-          (click)="construirTarjetasPorCategoria(categoria)" *ngFor="let categoria of categorias">{{categoria}}</a>
+          (click)="cambiarCategoria(categoria)" *ngFor="let categoria of categorias">{{categoria}}</a>
       </div>
-    </div>
+    </div> -->
     <div class="col">
       <div class="container">
         <div class="row" *ngFor="let filaTarjetas of tarjetas">
           <div class="col" *ngFor="let tarjeta of filaTarjetas">
-            <button type="button" class="btn btn-outline-light text-dark btn-circle btn-xl">
+            <button type="button" routerLink="/ver_lista_productos" (click)="imprimeNombreNegocio(tarjeta.nombre)" class="btn btn-outline-light text-dark btn-circle btn-xl">
               <div class="card no-border">
                 <div class="card-horizontal">
                   <div class="img-square-wrapper">
@@ -48,4 +59,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

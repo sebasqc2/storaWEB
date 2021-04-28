@@ -6,3 +6,10 @@
 .no-border {
   border: none;
 }
+
+.size {
+  font-size: 1.3vw;
+}
+.size-2 {
+  font-size: 2vw;
+}

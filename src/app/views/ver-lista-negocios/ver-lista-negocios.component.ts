@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Tienda } from 'src/app/shared/models/tienda.model';
 import { DataService } from 'src/app/shared/services/landing-page/tipos_estalecimientos.service';
 import { TiendaService } from 'src/app/shared/services/ver-lista-negocios/tienda.service';
+import { CrudServiceService } from '../../shared/services/CRUD/crud-service.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ver-lista-negocios',
@@ -11,34 +14,84 @@ import { TiendaService } from 'src/app/shared/services/ver-lista-negocios/tienda
 })
 export class VerListaNegociosComponent implements OnInit {
 
-  public arreglo: number[][] = [[1, 2, 3],[4, 5, 6], [7, 8, 9]]
-  
+  model: Array<Tienda>;
+  copia: Array<Tienda>;
+  private tiendas: Array<Tienda>;
 
-  public tiendas: Tienda[]
-  public tiendasPorUbicacion: Tienda[]
-  public tarjetas: Tienda[][] = []
-  public categorias: string[] = []
-  cantidadTiendasPorFila: number = 3
-  direccion: string
+  private ubicacion: string
+  private categoria: string
+  //private tiendas: Tienda[]
+  public tarjetas: Tienda[][]
+  private cantidadTiendasPorFila: number = 3
+  public categorias: string[]
+ 
 
-
-  constructor(public tiendaSvc: TiendaService, private dataSvc: DataService) {}
-
-  ngOnInit(): void {
-    this.tiendas = this.tiendaSvc.getTiendas();
-    this.direccion = this.tiendaSvc.getDireccion();
-    
-    this.construirTarjetas()
-    this.definirCategorias()
-    //this.getTiendas();
+  constructor(private router: Router, public tiendaSvc: TiendaService, private dataSvc: DataService, private crudServices: CrudServiceService) {
+    /* this.getTiendas();*/
+    this.definirCategorias(); 
   }
 
-  /* definirPaisDepartamentoCiudad(): string[]{
-    let i: number = this.direccion.indexOf(',')
-    let pais: string = this.direccion.substring(1, i);
-    console.log("el pais es: " + pais)
-    return [pais,""]
-  } */
+  ngOnInit() {
+  /*async ngOnInit() {
+    console.log('calling');
+    const result = await this.retardo();
+    console.log(result); */
+
+    this.ubicacion = this.tiendaSvc.getDireccion()
+    this.categoria = this.tiendaSvc.getCategoria()
+    this.tiendas = this.tiendaSvc.getTiendas()
+
+    let tiendasAplican = this.generarTiendasAplican()
+    this.construirTarjetas(tiendasAplican)
+  }
+
+  retardo() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve('resolved');
+      }, 600);
+    });
+  }
+
+  generarTiendasAplican():Tienda[]{
+    let tiendasAplican: Tienda[] = []
+    let paisDeptoCiudadPag: string[] = this.definirPaisDeptoCiudad(this.ubicacion)
+    let paisDeptoCiudadTienda: string[]
+
+    console.log(this.model)
+    for (let tienda of this.tiendas) {
+      paisDeptoCiudadTienda = this.definirPaisDeptoCiudad(tienda.direccion)
+      if(paisDeptoCiudadPag[0] === paisDeptoCiudadTienda[0] && paisDeptoCiudadPag[1] == paisDeptoCiudadTienda[1] && paisDeptoCiudadPag[2] == paisDeptoCiudadTienda[2]){
+        if(this.categoria == tienda.tipo.nombre || this.categoria == "Todas"){
+          tiendasAplican.push(tienda)
+        }
+      }
+    }
+    return tiendasAplican
+  }
+
+  construirTarjetas(tiendasAplican: Tienda[]): void{
+    let cantidadFilas:number = Math.trunc(tiendasAplican.length/this.cantidadTiendasPorFila)
+    let f:number = 1
+    let t:Tienda[] = []
+    this.tarjetas = []
+    for (let tienda of tiendasAplican) {
+      if(f > this.cantidadTiendasPorFila){
+        f = 1
+        this.tarjetas.push(t)
+        t = []
+      }
+      t.push(tienda)
+      f++
+    }
+    this.tarjetas.push(t)
+  }
+
+  cambiarCategoria(tipo: string): void{
+    this.categoria = tipo
+    let tiendasAplican = this.generarTiendasAplican()
+    this.construirTarjetas(tiendasAplican)
+  }
 
   definirPaisDeptoCiudad(dir: string): string[]{
     let cadenaAux: string = dir
@@ -65,106 +118,25 @@ export class VerListaNegociosComponent implements OnInit {
     return [pais, departamento, ciudad]
   }
 
-  definirTiendasPorUbicacion(): Tienda[] {
-    let ubicacion: string[] = this.definirPaisDeptoCiudad(this.direccion)
-    let tiendasPorUbicacion: Tienda[] = []
-    let direccion: string[] = []
-
-    for (let tienda of this.tiendas){
-      //console.log(tienda.direccion)
-      direccion = this.definirPaisDeptoCiudad(tienda.direccion)
-      console.log(direccion)
-
-      if(direccion[0] == ubicacion[0] && direccion[1] == ubicacion[1] && direccion[2] == ubicacion[2]){
-        tiendasPorUbicacion.push(tienda)
-      }
-    }
-
-    return tiendasPorUbicacion
-
-  }
-
-  construirTarjetas(): void{
-    //this.direccion = this.tiendaSvc.direccion;
-    /* this.direccion = this.tiendaSvc.getDireccion();
-    console.log("dirección: " + this.direccion) */
-
-    console.log("entra")
-    this.tiendasPorUbicacion = this.definirTiendasPorUbicacion()
-    this.tarjetas = []
-
-    let cantidadFilas:number = Math.trunc(this.tiendasPorUbicacion.length/this.cantidadTiendasPorFila)
-    let f:number = 1
-    let t:Tienda[] = []
-    for (let tienda of this.tiendasPorUbicacion) {
-      if(f > this.cantidadTiendasPorFila){
-        f = 1
-        this.tarjetas.push(t)
-        t = []
-      }
-      t.push(tienda)
-      f++
-    }
-    this.tarjetas.push(t)    
-  }
-
-  /* definirCategorias(): void{
-    this.categorias.push("Todas")
-    for (let tienda of this.tiendas){
-      if(!this.categorias.includes(tienda.tipo.nombre))
-      this.categorias.push(tienda.tipo.nombre)
-    }
-  } */
-
   definirCategorias(): void{
+    this.categorias = []
     this.categorias.push("Todas")
     for (let categoria of this.dataSvc.getTiendas()){
       this.categorias.push(categoria.nombre)
     }
   }
 
-  construirTarjetasPorCategoria(categoria: string): void{
-    //this.direccion = this.tiendaSvc.direccion;
-    /* this.direccion = this.tiendaSvc.getDireccion();
-    console.log("dirección: " + this.direccion) */
-
-    let tiendasPorCategoria = this.getTiendasPorCategoria(categoria);
-    let cantidadFilas:number = Math.trunc(tiendasPorCategoria.length/this.cantidadTiendasPorFila)
-    let f:number = 1
-    let t:Tienda[] = []
-    this.tarjetas = []
-    for (let tienda of tiendasPorCategoria) {
-      if(f > this.cantidadTiendasPorFila){
-        f = 1
-        this.tarjetas.push(t)
-        t = []
-      }
-      t.push(tienda)
-      f++
-    }
-    this.tarjetas.push(t)
-
+  onReloadURL(cat: string): void {
+    this.tiendaSvc.setCategoria(cat)
+    this.router.navigateByUrl("/ver_lista_negocios")
   }
 
-  getTiendasPorCategoria(categoria: string): Tienda[]{
-    let tiendasPorCategoria: Tienda[] = []
-    if (categoria == "Todas"){
-      return this.tiendasPorUbicacion
-    }
-    else{
-      for (let tienda of this.tiendasPorUbicacion){
-        if(tienda.tipo.nombre == categoria){
-          tiendasPorCategoria.push(tienda)
-        }
-      }
-      return tiendasPorCategoria
-    }
+  imprimeNombreNegocio(nombre: string): void {
+    console.log("El nombre del negocio es: " + nombre)
   }
-
-
-  /*
+ 
   getTiendas() {
-    this.crudServices.getModel('productos').subscribe(
+    this.crudServices.getModel('tiendas').subscribe(
       data => {
         if (JSON.stringify(data) === '[]') {
           Swal.fire({
@@ -172,12 +144,13 @@ export class VerListaNegociosComponent implements OnInit {
             showConfirmButton: false, timer: 1500
           });
         } else {
-          this.model = data;
-          this.copia = data;
+          
+          this.model = data
+          this.tiendas = data;
         }
       });
   }
-
+  /*
    async getBuscar() {
     if (this.entrada) {
       this.bandera = false;
@@ -221,6 +194,6 @@ export class VerListaNegociosComponent implements OnInit {
     this.limpiarBusqueda();
     Swal.fire({ icon: 'warning', title: 'Error...', text: 'No se ha encontrado entrenador!' });
   }
-*/
-
+ */
+  
 }

@@ -6,7 +6,8 @@ import { grupoTienda } from '../../models/grupoTienda.model';;
   providedIn: 'root'
 })
 export class TiendaService {
-  private static direccion: string
+  private static direccionTienda: string
+  private static categoriaTiendas: string
   //direccion: string = "sin direccion"
 
   private gruposTiendas: grupoTienda[] = [
@@ -59,10 +60,18 @@ export class TiendaService {
   }
 
   setDireccion(direccion: string):void {
-    TiendaService.direccion = direccion
+    TiendaService.direccionTienda = direccion
   }
 
   getDireccion(): string{
-    return TiendaService.direccion 
+    return TiendaService.direccionTienda
+  }
+
+  setCategoria(categoria: string):void{
+    TiendaService.categoriaTiendas = categoria
+  }
+
+  getCategoria(): string{
+    return TiendaService.categoriaTiendas
   }
 }
