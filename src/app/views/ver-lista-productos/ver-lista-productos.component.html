@@ -1,21 +1,21 @@
 <div class="container-fluid">
     <div class="row d-flex">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2  d-md-block bg-light sidebar collapse ">
+        <!-- <nav id="sidebarMenu" class="col-md-3 col-lg-2  d-md-block bg-light sidebar collapse ">
             <div class="sidebar-sticky pt-3">
                 <ul *ngFor="let i of categorias" class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" routerLink="/ver_lista_negocios">
                             <span data-feather="file"></span> {{i.nombre}}
                         </a>
                     </li>
                 </ul>
             </div>
-        </nav>
+        </nav> -->
         <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
             <section class="jumbotron ">
                 <div class="container d-flex">
                     <div class="card ">
-                        <img src={{infoTienda.imagen}} class="img-fluid rounded mx-auto d-block imgProducto" alt="producto" width="600px" height="180px">
+                        <img src={{infoTienda.imagen}} class="img-fluid rounded mx-auto d-block imgProducto" alt="producto" width="200px" height="180px">
                     </div>
                     <div class="infotienda">
                         <h1>{{nombreTienda}}</h1>
@@ -41,7 +41,7 @@
                     <div class="row">
                         <div *ngFor="let i of productos" class="col-md-4">
                             <div class="card mb-3 shadow-sm">
-                                <img src={{i.imagen}} class="img-fluid rounded mx-auto d-block imgProducto" alt="producto" width="100%" height="225">
+                                <img src={{i.imagen}} class="img-fluid rounded mx-auto d-block imgProducto" alt="producto" width="50%" height="225">
                                 <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
                                 <div class="card-body">
                                     <h5 class="card-title">{{i.nombreProducto}}</h5>

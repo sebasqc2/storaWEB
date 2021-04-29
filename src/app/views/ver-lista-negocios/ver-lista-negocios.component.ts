@@ -18,12 +18,14 @@ export class VerListaNegociosComponent implements OnInit {
   copia: Array<Tienda>;
   private tiendas: Array<Tienda>;
 
+
   private ubicacion: string
   private categoria: string
   //private tiendas: Tienda[]
   public tarjetas: Tienda[][]
   private cantidadTiendasPorFila: number = 3
   public categorias: string[]
+  public negocioSeleccionado='';
  
 
   constructor(private router: Router, public tiendaSvc: TiendaService, private dataSvc: DataService, private crudServices: CrudServiceService) {
@@ -131,9 +133,12 @@ export class VerListaNegociosComponent implements OnInit {
     this.router.navigateByUrl("/ver_lista_negocios")
   }
 
-  imprimeNombreNegocio(nombre: string): void {
-    console.log("El nombre del negocio es: " + nombre)
-  }
+  // imprimeNombreNegocio(nombre: string): void {
+  //   this.negocioSeleccionado= nombre;
+  //   console.log(this.tarjetas);
+    
+  //   console.log("El nombre del negocio es: " + nombre)
+  // }
  
   getTiendas() {
     this.crudServices.getModel('tiendas').subscribe(
