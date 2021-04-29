@@ -41,7 +41,8 @@
                     </div>
                 </div>
                 <div>
-                    <button class="btn btn-primary my-2 my-sm-0 " type="button " [disabled]="locationFormGroup.invalid " (click)="cargarDireccion()">&nbsp;&nbsp;&nbsp;&nbsp; Ir &nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <!-- <button class="btn btn-primary my-2 my-sm-0 " type="button " [disabled]="locationFormGroup.invalid " routerLink={{ruta}} (click)="cargarDireccion()" >&nbsp;&nbsp;&nbsp;&nbsp; Ir &nbsp;&nbsp;&nbsp;&nbsp;</button> -->
+                    <button class="btn btn-primary my-2 my-sm-0 " type="button " [disabled]="locationFormGroup.invalid " (click)="onReloadURL()" >&nbsp;&nbsp;&nbsp;&nbsp; Ir &nbsp;&nbsp;&nbsp;&nbsp;</button>
                 </div>
             </form>
         </section>

@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, ViewChildren } from '@angular/core';
+import { Router } from '@angular/router';
+import { TiendaService } from 'src/app/shared/services/ver-lista-negocios/tienda.service';
 import Swal from 'sweetalert2';
 
 import { CarouselComponent } from '../../shared/components/carousel/carousel.component'
@@ -10,7 +12,7 @@ import { DataService } from '../../shared/services/landing-page/tipos_estalecimi
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css'],
-  providers: [DataService]
+  providers: [DataService, TiendaService]
 })
 export class LandingPageComponent implements OnInit {
   @ViewChildren(CarouselComponent) carouselComponent;
@@ -23,7 +25,7 @@ export class LandingPageComponent implements OnInit {
 
   public tiendas: grupoTienda[];
 
-  constructor(private dataSvc: DataService) { }
+  constructor(private router: Router, private dataSvc: DataService, public tiendaSvc: TiendaService) { }
 
   ngOnInit() {
     this.tiendas = this.dataSvc.getTiendas();
@@ -32,7 +34,10 @@ export class LandingPageComponent implements OnInit {
 
 
   cargarTiendas(tienda: grupoTienda):void{
-    if(this.Direccion =="" || this.Direccion.length<3){
+    /* this.Direccion = this.tiendaSvc.getDireccion()
+    console.log("la dirección es: " + this.Direccion) */
+    
+    /* if(this.Direccion == "" || this.Direccion.length<3){
       Swal.fire({
         position: 'top-end', icon: 'error', title: 'Debe ingresar una dirección valida',
         showConfirmButton: false, timer: 1500
@@ -43,7 +48,22 @@ export class LandingPageComponent implements OnInit {
         ' Establecimientos comerciales!',
         'success'
       )
+    } */
+    this.tiendaSvc.setCategoria(tienda.nombre)
+  }
+
+  onReloadURL(cat: string): void {
+    if(this.tiendaSvc.getDireccion() == "" || this.tiendaSvc.getDireccion().length<3){
+      console.log("entra")
+      Swal.fire({
+        position: 'top-end', icon: 'error', title: 'Debe ingresar una dirección valida',
+        showConfirmButton: false, timer: 1500
+      })
+    }else{
+      this.tiendaSvc.setCategoria(cat)
+      this.router.navigateByUrl("/ver_lista_negocios")
     }
+    
   }
 
   ngAfterViewInit() {
