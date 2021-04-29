@@ -16,7 +16,7 @@ export class CrudServiceService {
       'Content-Type': 'application/json',
       // tslint:disable-next-line: quotemark
       // tslint:disable-next-line: object-literal-key-quotes
-      "Authorization":  `Bearer ${this.local}`
+      //"Authorization":  `Bearer ${this.local}`
     })
   };
 
@@ -29,7 +29,7 @@ export class CrudServiceService {
         'Content-Type': 'application/json',
         // tslint:disable-next-line: quotemark
         // tslint:disable-next-line: object-literal-key-quotes
-        "Authorization": `Bearer ${this.local}`
+        //"Authorization": `Bearer ${this.local}`
       })
     };
   }

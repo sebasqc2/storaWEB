@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChildren } from '@angular/core';
 import Swal from 'sweetalert2';
-
+import { Router } from '@angular/router';
 import { CarouselComponent } from '../../shared/components/carousel/carousel.component'
 
 import { grupoTienda } from '../../shared/models/grupoTienda.model';
@@ -20,10 +20,10 @@ export class LandingPageComponent implements OnInit {
   myCarousel;
 	carouselWidth = 640;
 	carouselHeight = 220;
-
+  tiendaTest = "tiendaprueba1";
   public tiendas: grupoTienda[];
 
-  constructor(private dataSvc: DataService) { }
+  constructor(private router:Router,private dataSvc: DataService) { }
 
   ngOnInit() {
     this.tiendas = this.dataSvc.getTiendas();

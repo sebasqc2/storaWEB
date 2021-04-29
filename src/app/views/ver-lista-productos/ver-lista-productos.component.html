@@ -1,0 +1,100 @@
+<div class="container-fluid">
+    <div class="row d-flex">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2  d-md-block bg-light sidebar collapse ">
+            <div class="sidebar-sticky pt-3">
+                <ul *ngFor="let i of categorias" class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file"></span> {{i.nombre}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-md-4">
+            <section class="jumbotron ">
+                <div class="container d-flex">
+                    <div class="card ">
+                        <img src={{infoTienda.imagen}} class="img-fluid rounded mx-auto d-block imgProducto" alt="producto" width="600px" height="180px">
+                    </div>
+                    <div class="infotienda">
+                        <h1>{{nombreTienda}}</h1>
+                        <p class="lead text-muted">{{infoTienda.descripcion}}</p>
+                    </div>
+                </div>
+                <div class="container d-flex">
+                    <div class="card-body">
+                        <p class="card-text">Ubicacion: {{infoTienda.barrio}} / {{infoTienda.ciudad}}.</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Direccion: {{infoTienda.direccion}}.</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Telefono: {{infoTienda.telefono}}.</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <div class="album py-5 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div *ngFor="let i of productos" class="col-md-4">
+                            <div class="card mb-3 shadow-sm">
+                                <img src={{i.imagen}} class="img-fluid rounded mx-auto d-block imgProducto" alt="producto" width="100%" height="225">
+                                <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+                                <div class="card-body">
+                                    <h5 class="card-title">{{i.nombreProducto}}</h5>
+                                    <p class="card-text">Precio: {{i.precio}}.</p>
+                                    <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="modalData(i)">Ver Producto</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title " id="exampleModalLabel">Detalles</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <div class="container espacioImagen">
+                    <img src={{model.imagen}} class="img-fluid rounded mx-auto d-block imgProducto" alt="producto">
+                </div>
+                <div class="container">
+                    <h5>{{model.nombreProducto}}</h5>
+                    <p>{{model.descripcion}}</p>
+                    <h6 class="valor">{{convertirPrecio()}}</h6>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="container">
+                    <form [formGroup]="form">
+                        <div class="row">
+                            <div class="col-4">
+                                <h5 class="mt-2 text-right">Cantidad: </h5>
+                            </div>
+                            <div class="col-3">
+                                <ngx-number-spinner formControlName="price" min="1" max="{{model.stock}}" (change)="change($event)"></ngx-number-spinner>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-4">
+                                <button type="button" class="btn btn-primary mt-1" (click)="cargarPedido()" data-dismiss="modal">Agregar {{this.precio}}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

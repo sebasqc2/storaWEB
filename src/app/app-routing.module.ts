@@ -1,3 +1,4 @@
+import { VerListaProductosComponent } from './views/ver-lista-productos/ver-lista-productos.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -14,6 +15,8 @@ const routes: Routes = [
   { path: 'mis_productos', component: ProductoTiendaComponent },
   { path: 'agregar_producto', component: AgregarProductoComponent },
   { path: 'editar_producto', component: EditarProductoComponent },
+  { path: 'productos/:tienda', component: VerListaProductosComponent },
+  //{ path: 'productos', component: VerListaProductosComponent },
   { path: '**', redirectTo: 'landing' }
 ];
 
