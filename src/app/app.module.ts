@@ -21,7 +21,12 @@ import { RegisterComponent } from './shared/components/register/register.compone
 import { AgregarProductoComponent } from './views/agregar-producto/agregar-producto.component';
 import { ProductoTiendaComponent } from './views/producto-tienda/producto-tienda.component';
 import { EditarProductoComponent } from './views/editar-producto/editar-producto.component';
+
 import { VerListaProductosComponent } from './views/ver-lista-productos/ver-lista-productos.component';
+
+import { VerListaNegociosComponent } from './views/ver-lista-negocios/ver-lista-negocios.component';
+
+
 
 
 
@@ -37,7 +42,11 @@ import { VerListaProductosComponent } from './views/ver-lista-productos/ver-list
     AgregarProductoComponent,
     ProductoTiendaComponent,
     EditarProductoComponent,
-    VerListaProductosComponent
+
+    VerListaProductosComponent,
+
+    VerListaNegociosComponent,
+
   ],
   imports: [
     BrowserModule,
