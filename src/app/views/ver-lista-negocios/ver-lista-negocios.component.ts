@@ -60,7 +60,7 @@ export class VerListaNegociosComponent implements OnInit {
     let paisDeptoCiudadPag: string[] = this.definirPaisDeptoCiudad(this.ubicacion)
     let paisDeptoCiudadTienda: string[]
 
-    console.log(this.model)
+    // console.log(this.model)
     for (let tienda of this.tiendas) {
       paisDeptoCiudadTienda = this.definirPaisDeptoCiudad(tienda.direccion)
       if(paisDeptoCiudadPag[0] === paisDeptoCiudadTienda[0] && paisDeptoCiudadPag[1] == paisDeptoCiudadTienda[1] && paisDeptoCiudadPag[2] == paisDeptoCiudadTienda[2]){

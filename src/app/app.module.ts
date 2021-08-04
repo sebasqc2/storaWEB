@@ -25,6 +25,7 @@ import { EditarProductoComponent } from './views/editar-producto/editar-producto
 import { VerListaProductosComponent } from './views/ver-lista-productos/ver-lista-productos.component';
 
 import { VerListaNegociosComponent } from './views/ver-lista-negocios/ver-lista-negocios.component';
+import { VerPedidosComponent } from './views/ver-pedidos/ver-pedidos.component';
 
 
 
@@ -42,10 +43,9 @@ import { VerListaNegociosComponent } from './views/ver-lista-negocios/ver-lista-
     AgregarProductoComponent,
     ProductoTiendaComponent,
     EditarProductoComponent,
-
     VerListaProductosComponent,
-
     VerListaNegociosComponent,
+    VerPedidosComponent,
 
   ],
   imports: [

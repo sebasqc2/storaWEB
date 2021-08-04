@@ -8,6 +8,7 @@ import { ProductoTiendaComponent } from './views/producto-tienda/producto-tienda
 import { AgregarProductoComponent } from './views/agregar-producto/agregar-producto.component';
 import { EditarProductoComponent } from './views/editar-producto/editar-producto.component';
 import { VerListaNegociosComponent } from './views/ver-lista-negocios/ver-lista-negocios.component';
+import { VerPedidosComponent} from './views/ver-pedidos/ver-pedidos.component';
 
 const routes: Routes = [
   { path: 'home', component: AppComponent },
@@ -16,7 +17,7 @@ const routes: Routes = [
   { path: 'mis_productos', component: ProductoTiendaComponent },
   { path: 'agregar_producto', component: AgregarProductoComponent },
   { path: 'editar_producto', component: EditarProductoComponent },
-
+  { path: 'pedidos', component: VerPedidosComponent },
   { path: 'productos/:tienda', component: VerListaProductosComponent },
   //{ path: 'productos', component: VerListaProductosComponent },
 

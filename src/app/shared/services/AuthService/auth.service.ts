@@ -30,7 +30,9 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('email');
     localStorage.removeItem('usuario');
-    localStorage.removeItem('usuario');
+    localStorage.removeItem('rol');
+    localStorage.removeItem('cartProductos');
+    localStorage.removeItem('cartCantidades');
 
   }
 
@@ -84,16 +86,12 @@ export class AuthService {
     if (registro.role==="tendero") {
       authData.role=rolTendero;
     }
-    console.log(authData);
+    // console.log(authData);
 
     return this.http.post(
       `${ this.serverURL}users`, authData, this.httpOptions
     ).pipe(
       map(resp => {
-        // tslint:disable-next-line: no-string-literal
-        console.log(resp);
-        
-        //this.guardarDatos( resp['jwt'], resp['user'].username , resp['user'].role.name);
         return resp;
       })
     );

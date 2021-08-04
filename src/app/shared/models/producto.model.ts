@@ -5,7 +5,6 @@ export class Producto {
     public stock: number;
     public precio: number;
     public unidad: string;
-    //public estado: boolean;
     public imagen: string;
     public descripcion:string;
 
@@ -15,9 +14,7 @@ export class Producto {
         this.stock = stock;
         this.precio = precio;
         this.unidad = unidad;
-        //this.estado = estado;
         this.imagen = imagen;
         this.descripcion = descripcion;
-
     }
 }

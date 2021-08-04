@@ -1,0 +1,77 @@
+<div class=" d-flex justify-content-center align-items-center mx-5 px-3">
+    <div class="table-responsive">
+        <table class="table ">
+            <thead class="thead-dark">
+                <tr>
+                    <th>CODIGO</th>
+                    <th>FECHA</th>
+                    <th>USUARIO</th>
+                    <th>VALOR</th>
+                    <th>ESTADO</th>
+                    <th>OPCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of pedidos">
+                    <td>{{i.codigo}}</td>
+                    <td>{{i.fecha}} </td>
+                    <td>{{i.users_permissions_user.nombre}} </td>
+                    <td>{{i.total}} </td>
+                    <td>{{i.estado}} </td>
+                    <td>
+                        <a class="btn btn btn-light" role="button" (click)="revisarPedido(i)"><i class="far fa-check-square"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="check">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title text-center w-100 font-weight-bold">Pedido en proceso</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-lable="close">&times;</button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class=" d-flex justify-content-center align-items-center">
+                    <div class="table-responsive">
+                        <table class="table ">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>CODIGO</th>
+                                    <th>NOMBRE PRODUCTO</th>
+                                    <th>UNIDAD</th>
+                                    <th>PRECIO</th>
+                                    <th>CANTIDAD</th>
+                                    <th>SUBTOTAL</th>
+                                    <th>PREPARADO</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of productosPedido">
+                                    <td>{{i.codigo}}</td>
+                                    <td>{{i.nombreProducto}} </td>
+                                    <td>{{i.unidad}} </td>
+                                    <td>{{i.precio}} </td>
+                                    <td>{{i.cantidad}} </td>
+                                    <td>{{i.subtotal}} </td>
+                                    <td>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck{{i.codigo}}">
+                                            <label class="custom-control-label" for="customCheck{{i.codigo}}"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="d-flex justify-content-around">
+                    <a class="btn btn btn-dark" role="button" (click)="despacharPedido()">Confirmar Despacho<i class="fas fa-trash-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

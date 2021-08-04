@@ -19,6 +19,23 @@ h1 {
     font-size: 3vw;
 }
 
+h2 {
+    font-family: sans-serif;
+    font-size: 20px;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #5B5B5B;
+    font-weight: 400;
+    text-decoration: none;
+    font-style: normal;
+    text-transform: capitalize;
+    margin-right: 3rem!important;
+    margin: .5rem!important;
+    text-align: center;
+    vertical-align: middle;
+    padding: .375rem .75rem;
+}
+
 
 /* ================ Header Section ================ */
 

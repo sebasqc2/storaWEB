@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { TiendaService } from 'src/app/shared/services/ver-lista-negocios/tienda.service';
 import Swal from 'sweetalert2';
 import { CarouselComponent } from '../../shared/components/carousel/carousel.component'
-
+import {AuthService} from '../../shared/services/AuthService/auth.service';
 import { grupoTienda } from '../../shared/models/grupoTienda.model';
 import { DataService } from '../../shared/services/landing-page/tipos_estalecimientos.service';
 
@@ -21,16 +21,28 @@ export class LandingPageComponent implements OnInit {
   myCarousel;
 	carouselWidth = 640;
 	carouselHeight = 220;
-  tiendaTest = "tiendaprueba1";
+  isUser:boolean = true;
+  isTendero:boolean = false;
+  rol:string;
   public tiendas: grupoTienda[];
 
 
-  constructor(private router:Router,private dataSvc: DataService,public tiendaSvc: TiendaService) { }
+  constructor(private auth: AuthService,private router:Router,private dataSvc: DataService,public tiendaSvc: TiendaService) { }
 
 
   ngOnInit() {
     this.tiendas = this.dataSvc.getTiendas();
     this.Direccion="";
+    if (localStorage.getItem("rol")) {
+      this.rol = localStorage.getItem("rol");
+      if(this.rol==="Usuario"){
+        this.isUser=true
+        this.isTendero=false
+      }else{
+        this.isUser=false
+        this.isTendero=true
+      }
+    }     
   }
 
 

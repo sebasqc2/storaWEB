@@ -12,16 +12,18 @@
             </ul>
 
             <form class="d-flex">
-                <a role="button" class="btn btn-warning m-2 mr-5" href="#"><b>Promociones</b><span class="sr-only">(current)</span></a>
-                <a *ngIf="!status" class="btn btn-danger m-2" href="" data-toggle="modal" data-target="#signupPage"><b>Registrarse<i class="fas fa-user-plus ml-3"></i></b></a>
-                <a *ngIf="!status" class="btn btn-success m-2" href="" data-toggle="modal" data-target="#signinPage" tabindex="-1"> <b>Ingresar<i class="fas fa-sign-in-alt ml-3"></i></b> </a>
-                <a *ngIf="status" class="btn btn-outline-info m-2" href="">{{nombreUsuario}}</a>
+
+                <h2 *ngIf="isLogged">{{nombreUsuario}}</h2>
+                <a role="button" class="btn btn-warning m-2 mr-5"><b>Promociones</b><span class="sr-only">(current)</span></a>
+                <a *ngIf="!isLogged" class="btn btn-danger m-2" href="" data-toggle="modal" data-target="#signupPage"><b>Registrarse<i class="fas fa-user-plus ml-3"></i></b></a>
+                <a *ngIf="!isLogged" class="btn btn-success m-2" href="" data-toggle="modal" data-target="#signinPage" tabindex="-1"> <b>Ingresar<i class="fas fa-sign-in-alt ml-3"></i></b> </a>
+                <a *ngIf="isLogged" class="btn btn-dark m-2" href=""> <b>Cerrar sesión<i class="fas fa-sign-out-alt ml-3"></i></b> </a>
             </form>
         </div>
     </nav>
 
 
-    <div class="container center">
+    <div *ngIf="isUser" class="container center">
         <section class='hero-header-text'>
             <br><br><br>
             <h1>Todo lo que necesitas cerca de ti!!!</h1>
@@ -42,24 +44,36 @@
                 </div>
                 <div>
                     <!-- <button class="btn btn-primary my-2 my-sm-0 " type="button " [disabled]="locationFormGroup.invalid " routerLink={{ruta}} (click)="cargarDireccion()" >&nbsp;&nbsp;&nbsp;&nbsp; Ir &nbsp;&nbsp;&nbsp;&nbsp;</button> -->
-                    <button class="btn btn-primary my-2 my-sm-0 " type="button " [disabled]="locationFormGroup.invalid " (click)="onReloadURL()" >&nbsp;&nbsp;&nbsp;&nbsp; Ir &nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button class="btn btn-primary my-2 my-sm-0 " type="button " [disabled]="locationFormGroup.invalid " (click)="onReloadURL()">&nbsp;&nbsp;&nbsp;&nbsp; Ir &nbsp;&nbsp;&nbsp;&nbsp;</button>
                 </div>
             </form>
         </section>
     </div>
+    <div *ngIf="isTendero" class="container center">
+        <section class='hero-header-text'>
+            <br><br><br>
+            <h1>Hola Tendero</h1>
+            <div fxFlex="100" fxFlex.gt-xs="40" class="pr-1 pb-1">
+                <a class="btn btn-secondary p-5" href="#" role="button" routerLink="/mis_productos">
+                    Mis productos
+                </a>
+                <a class="btn btn-secondary p-5" href="#" role="button" routerLink="/pedidos">
+                    Ver Pedidos
+                </a>
+            </div>
+        </section>
+    </div>
 </header>
 
-<div class="modal fade" id="signinPage">
+<div class="modal" id="signinPage">
     <div class="modal-dialog">
         <div class="modal-content">
-
             <div class="modal-header text-center">
                 <h3 class="modal-title w-100 dark-grey-text font-weight-bold">Ingresa</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-lable="close">&times;</button>
             </div>
-
             <div class="modal-body mx-4">
-                <app-login></app-login>
+                <app-login (closeLoginModal)="closeLoginModal()"></app-login>
             </div>
         </div>
     </div>
@@ -74,7 +88,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-lable="close">&times;</button>
             </div>
             <div class="modal-body mx-3">
-                <app-register></app-register>
+                <app-register (closeRegisterModal)="closeRegisterModal()"></app-register>
             </div>
         </div>
     </div>

@@ -21,6 +21,9 @@
                         <h1>{{nombreTienda}}</h1>
                         <p class="lead text-muted">{{infoTienda.descripcion}}</p>
                     </div>
+                    <div>
+                        <a class="btn btn-light m-2" href="" data-toggle="modal" data-target="#shoppingCar"><b>Ver Carrito <i class="fas fa-shopping-cart ml-3"></i></b> </a>
+                    </div>
                 </div>
                 <div class="container d-flex">
                     <div class="card-body">
@@ -34,6 +37,7 @@
                     </div>
 
                 </div>
+
             </section>
 
             <div class="album py-5 bg-light">
@@ -82,17 +86,64 @@
                     <form [formGroup]="form">
                         <div class="row">
                             <div class="col-4">
-                                <h5 class="mt-2 text-right">Cantidad: </h5>
+                                <h5 class="mt-2 text-right">Cantidade: </h5>
                             </div>
                             <div class="col-3">
                                 <ngx-number-spinner formControlName="price" min="1" max="{{model.stock}}" (change)="change($event)"></ngx-number-spinner>
                             </div>
                             <div class="col-1"></div>
                             <div class="col-4">
-                                <button type="button" class="btn btn-primary mt-1" (click)="cargarPedido()" data-dismiss="modal">Agregar {{this.precio}}</button>
+                                <button type="button" class="btn btn-primary mt-1" (click)="actualizarPedido()" data-dismiss="modal">Agregar {{this.precio}}</button>
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="shoppingCar">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title text-center w-100 font-weight-bold">Carrito de compras</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-lable="close">&times;</button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class=" d-flex justify-content-center align-items-center">
+                    <div class="table-responsive">
+                        <table class="table ">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>CODIGO</th>
+                                    <th>NOMBRE PRODUCTO</th>
+                                    <th>UNIDAD</th>
+                                    <th>PRECIO</th>
+                                    <th>CANTIDAD</th>
+                                    <th>SUBTOTAL</th>
+                                    <th>OPCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let i of pedidoFormat">
+                                    <td>{{i.codigo}}</td>
+                                    <td>{{i.nombreProducto}} </td>
+                                    <td>{{i.unidad}} </td>
+                                    <td>{{i.precio}} </td>
+                                    <td>{{i.cantidad}} </td>
+                                    <td>{{i.subtotal}} </td>
+                                    <td>
+                                        <a class="btn btn btn-light" role="button" (click)="eliminarProducto(i.codigo)"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="d-flex justify-content-around">
+                    <!-- <h3 *ngIf="this.pedido.total">Total: {{this.pedido.total}}</h3> -->
+                    <a class="btn btn btn-light" role="button" (click)="confirmarPedido()">Confirmar Pedido<i class="fas fa-trash-alt"></i></a>
                 </div>
             </div>
         </div>
